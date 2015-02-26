@@ -1,64 +1,4 @@
-function Princess(arena) {
-  this.$arena = arena;
-  this.x = this.$arena.width() / 2;
-  this.y = this.$arena.height() / 2;
-  this.dir = "sitting there like a fatass";
-  this.speed = 5;
-  this.height = 32;
-  this.width = 32;
-  this.initDisplay();
-}
 
-function Cake(arena, x, y) {
-  this.$arena = arena;
-  this.height = 34;
-  this.width = 34;
-  this.x = x+this.width/2;
-  this.y = y+this.height/2;
-  this.cakeDisplay();
-}
-
-function Carrot(arena, x, y) {
-  this.$arena = arena;
-  this.height = 34;
-  this.width = 34;
-  this.x = x+this.width/2;
-  this.y = y+this.height/2;
-  this.carrotDisplay();
-}
-
-function Score(scorebar) {
-  this.$scorebar = scorebar;
-  this.pounds = 200;
-  this.lives = 3;
-  this.scoreDisplay();
-}
-
-Cake.prototype.cakeDisplay = function() {
-  this.$cake = $("<div class='cake'></div>")
-  $('#arena').append(this.$cake);
-
-  this.updateCakeDisplay();
-}
-
-Carrot.prototype.carrotDisplay = function() {
-  this.$carrot = $("<div class='carrot'></div>")
-  $('#arena').append(this.$carrot);
-
-  this.updateCarrotDisplay();
-}
-
-Princess.prototype.initDisplay = function() {
-  this.$princess = $("<div id='princess'></div>")
-  $('#arena').append(this.$princess);
-
-  this.updateDisplay();
-}
-
-Score.prototype.scoreDisplay = function() {
-  this.$score = $("<div id='score'>POUNDS: "+this.pounds+"<br>LIVES: "+this.lives+"</div>")
-  $('#scorebar').append(this.$score);
-}
 
 Princess.prototype.eatCake = function (cake,score) {
   if (Math.sqrt(Math.pow((this.x-cake.x),2)+Math.pow(this.y-cake.y,2)) < (cake.width+this.width)/2)
@@ -66,7 +6,7 @@ Princess.prototype.eatCake = function (cake,score) {
     nomCake.play();
     cake.x = Math.floor(Math.random() * 600) + 100//Math.random()*600;
     cake.y = Math.floor(Math.random() * 600) + 100//Math.random()*600;
-    this.fattenBooty();
+    this.princessGrow();
     cake.updateCakeDisplay();
     score.pounds+=100;
     score.updateScore();
@@ -92,19 +32,7 @@ Princess.prototype.eatCarrot = function (carrot,score) {
     }
 }
 
-Princess.prototype.fattenBooty = function () {
-  this.height += 20;
-  this.width += 20;
-  $('#princess').css({height: this.height, width: this.width});
-  this.updateDisplay();
-}
 
-Princess.prototype.skinnyBooty = function () {
-  this.height -= 20;
-  this.width -= 20;
-  $('#princess').css({height: this.height, width: this.width});
-  this.updateDisplay();
-}
 
 Princess.prototype.move = function() {
   old_x = this.x;
@@ -153,6 +81,10 @@ Princess.prototype.move = function() {
 
 var nomCake = new Audio('cakenom.wav');
 var nomCarrot = new Audio('ew.wav');
+
+//////////////////
+///   Bounds   ///
+//////////////////
 
 Princess.prototype.inBounds = function () {
   return (this.x > this.width / 2 && this.x < this.$arena.width() - this.width / 2 && this.y > this.height / 2 && this.y < this.$arena.height() - this.height / 2)
