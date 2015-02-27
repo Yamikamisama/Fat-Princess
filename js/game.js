@@ -17,11 +17,6 @@ Princess.prototype.inBounds = function () {
 ///    Game Creation    ///
 ///////////////////////////
 
-Game.prototype.loop = function() {
-  this.princess.move();
-  this.princess.eatCake(this.cake[0],  this.score);
-  this.princess.eatCarrot(this.carrot[0],  this.score);
-}
 
 $(document).ready(function() {
   game = new Game();
@@ -41,5 +36,10 @@ function Game() {
   this.cake = [new Cake(this.$arena, 600, 600)];
   this.carrot = [new Carrot(this.$arena, 200, 200)];
   this.score = new Score(this.$scorebar);
-  // this.$carrots = [new Carrot(this.$arena)];
+}
+
+Game.prototype.loop = function() {
+  this.princess.move();
+  this.princess.eatCake(this.cake[0],  this.score);
+  this.princess.eatCarrot(this.carrot[0],  this.score);
 }

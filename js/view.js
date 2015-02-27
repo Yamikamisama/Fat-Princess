@@ -73,7 +73,6 @@ Score.prototype.updateScore = function(){
 ///   Actions for Objects   ///
 ////////////////////////////////
 
-
 Princess.prototype.eatCake = function (cake,score) {
   if (Math.sqrt(Math.pow((this.x-cake.x),2)+Math.pow(this.y-cake.y,2)) < (cake.width+this.width)/2)
     {
@@ -84,9 +83,7 @@ Princess.prototype.eatCake = function (cake,score) {
     cake.updateCakeDisplay();
     score.pounds+=100;
     score.updateScore();
-    console.log("cake eaten");
     }
-  console.log("im eating cakes");
 }
 
 Princess.prototype.eatCarrot = function (carrot,score) {
