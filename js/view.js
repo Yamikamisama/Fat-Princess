@@ -66,12 +66,11 @@ Carrot.prototype.updateCarrotDisplay = function () {
 }
 
 Score.prototype.updateScore = function(){
-  console.log(this.pounds);
   $('#score').html("<div id='score'>POUNDS: "+this.pounds+"<br>LIVES: "+this.lives+"</div>");
 };
 
 ////////////////////////////////
-///   Actions for Objsects   ///
+///   Actions for Objects   ///
 ////////////////////////////////
 
 
@@ -107,7 +106,9 @@ Princess.prototype.eatCarrot = function (carrot,score) {
     }
 }
 
-
+//////////////////////////////////////////
+///   Princess Movement Fuctionality   ///
+//////////////////////////////////////////
 
 Princess.prototype.move = function() {
   old_x = this.x;
@@ -126,6 +127,7 @@ Princess.prototype.move = function() {
       this.y += this.speed;
       break;
   }
+
   if (! this.inBounds()) {
     this.x = old_x;
     this.y = old_y;
