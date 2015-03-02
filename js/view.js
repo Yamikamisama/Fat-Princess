@@ -1,27 +1,18 @@
 ////////////////////////////
 ///   Initial Displays   ///
 ////////////////////////////
+var View = {
+  setToArena:function(object, callback){
+  $("#arena").append(object.html);
 
-Cake.prototype.cakeDisplay = function() {
-  this.$cake = $("<div class='cake'></div>")
-  $('#arena').append(this.$cake);
+  callback(object);
+  },
 
-  this.updateCakeDisplay();
-}
-
-Carrot.prototype.carrotDisplay = function() {
-  this.$carrot = $("<div class='carrot'></div>")
-  $('#arena').append(this.$carrot);
-
-  this.updateCarrotDisplay();
-}
-
-Princess.prototype.initDisplay = function() {
-  this.$princess = $("<div id='princess'></div>")
-  $('#arena').append(this.$princess);
-
-  this.updateDisplay();
-}
+  updateArena: function(element){
+  element.html.css('top', element.y - element.height / 2);
+  element.html.css('left', element.x - element.width / 2);
+  }
+};
 
 Score.prototype.scoreDisplay = function() {
   this.$score = $("<div id='score'>POUNDS: "+this.pounds+"<br>LIVES: "+this.lives+"</div>")
@@ -36,34 +27,20 @@ Princess.prototype.princessGrow = function () {
   this.height += 20;
   this.width += 20;
   $('#princess').css({height: this.height, width: this.width});
-  this.updateDisplay();
+  this.view.updateArena(this)
 }
 
 Princess.prototype.princessShrink = function () {
   this.height -= 20;
   this.width -= 20;
   $('#princess').css({height: this.height, width: this.width});
-  this.updateDisplay();
+  this.view.updateArena(this)
 }
 
 ///////////////////////////
 ///   Display Updates   ///
 ///////////////////////////
 
-Princess.prototype.updateDisplay = function () {
-  this.$princess.css('top', this.y - this.height / 2);
-  this.$princess.css('left', this.x - this.width / 2);
-}
-
-Cake.prototype.updateCakeDisplay = function () {
-  this.$cake.css('top', this.y - this.height / 2);
-  this.$cake.css('left', this.x - this.width / 2);
-}
-
-Carrot.prototype.updateCarrotDisplay = function () {
-  this.$carrot.css('top', this.y - this.height / 2);
-  this.$carrot.css('left', this.x - this.width / 2);
-}
 
 Score.prototype.updateScore = function(){
   $('#score').html("<div id='score'>POUNDS: "+this.pounds+"<br>LIVES: "+this.lives+"</div>");
@@ -77,10 +54,10 @@ Princess.prototype.eatCake = function (cake,score) {
   if (Math.sqrt(Math.pow((this.x-cake.x),2)+Math.pow(this.y-cake.y,2)) < (cake.width+this.width)/2)
     {
     eatCakeSound.play();
-    cake.x = Math.floor(Math.random() * 600) + 100//Math.random()*600;
+    cake.x = Math.floor(Math.random() * 600) + 100
     cake.y = Math.floor(Math.random() * 600) + 100//Math.random()*600;
     this.princessGrow();
-    cake.updateCakeDisplay();
+    this.view.setToArena(cake, this.view.updateArena)
     score.pounds+=100;
     score.updateScore();
     }
@@ -99,7 +76,7 @@ Princess.prototype.eatCarrot = function (carrot,score) {
       alert("My anaconda don't want none unless...");
     }
     score.updateScore();
-    carrot.updateCarrotDisplay();
+    this.view.setToArena(carrot, this.view.updateArena)
     }
 }
 
@@ -154,5 +131,5 @@ Princess.prototype.move = function() {
       }
     }
   }
-  this.updateDisplay();
+  this.view.updateArena(this)
 }
