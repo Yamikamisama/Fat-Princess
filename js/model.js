@@ -8,7 +8,7 @@ function Princess(arena, view) {
   this.$arena = arena;
   this.x = this.$arena.width() / 2;
   this.y = this.$arena.height() / 2;
-  this.dir = "sitting there like a fatass";
+  this.dir = "Just sitting there! Get to some cake!!!";
   this.speed = 5;
   this.height = 32;
   this.width = 32;

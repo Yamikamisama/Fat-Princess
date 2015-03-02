@@ -5,11 +5,9 @@
 var eatCakeSound = new Audio('cakenom.wav');
 var eatCarrotSound = new Audio('ew.wav');
 
-
 ///////////////////////////
 ///    Game Creation    ///
 ///////////////////////////
-
 
 $(document).ready(function() {
   game = new Game(View);

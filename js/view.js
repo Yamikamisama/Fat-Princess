@@ -1,6 +1,6 @@
-////////////////////////////
-///   Initial Displays   ///
-////////////////////////////
+/////////////////////
+///    Displays   ///
+/////////////////////
 var View = {
   setToArena:function(object, callback){
   $("#arena").append(object.html);
@@ -19,6 +19,14 @@ Score.prototype.scoreDisplay = function() {
   $('#scorebar').append(this.$score);
 }
 
+/////////////////////////
+///   Score Updates   ///
+/////////////////////////
+
+Score.prototype.updateScore = function(){
+  $('#score').html("<div id='score'>POUNDS: "+this.pounds+"<br>LIVES: "+this.lives+"</div>");
+};
+
 ///////////////////////////
 ///   Grow and shrink   ///
 ///////////////////////////
@@ -36,15 +44,6 @@ Princess.prototype.princessShrink = function () {
   $('#princess').css({height: this.height, width: this.width});
   this.view.updateArena(this)
 }
-
-///////////////////////////
-///   Display Updates   ///
-///////////////////////////
-
-
-Score.prototype.updateScore = function(){
-  $('#score').html("<div id='score'>POUNDS: "+this.pounds+"<br>LIVES: "+this.lives+"</div>");
-};
 
 ////////////////////////////////
 ///   Actions for Objects   ///
@@ -73,7 +72,7 @@ Princess.prototype.eatCarrot = function (carrot,score) {
     score.pounds-=100;
     score.lives-=1;
     if (score.lives==0) {
-      alert("My anaconda don't want none unless...");
+      alert("Is that the best you can do... She can eat more than that!");
     }
     score.updateScore();
     this.view.setToArena(carrot, this.view.updateArena)
