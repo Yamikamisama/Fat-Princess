@@ -3,7 +3,8 @@
 ///   Objects   ///
 ///////////////////
 
-function Princess(arena) {
+function Princess(arena, view) {
+  this.view = view
   this.$arena = arena;
   this.x = this.$arena.width() / 2;
   this.y = this.$arena.height() / 2;
@@ -11,7 +12,7 @@ function Princess(arena) {
   this.speed = 5;
   this.height = 32;
   this.width = 32;
-  this.initDisplay();
+  this.html = $("<div id='princess'></div>");
 }
 
 function Cake(x, y) {
@@ -19,7 +20,7 @@ function Cake(x, y) {
   this.width = 34;
   this.x = x+this.width/2;
   this.y = y+this.height/2;
-  this.cakeDisplay();
+  this.html = $("<div class='cake'></div>");
 }
 
 function Carrot(x, y) {
@@ -27,7 +28,7 @@ function Carrot(x, y) {
   this.width = 34;
   this.x = x+this.width/2;
   this.y = y+this.height/2;
-  this.carrotDisplay();
+  this.html = $("<div class='carrot'></div>");
 }
 
 function Score(scorebar) {
