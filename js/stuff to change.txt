@@ -14,3 +14,15 @@ refactor Actions for Objects into one function(Stretch)
 Check out lines 136 and 139
   - Same function being called twice / unnecessarily
   - change to switch statement not if statement
+
+
+
+function Carrot(){
+ this.html = $("<div id='carrot'></div>");
+}
+function Princess(){
+ this.html = $("<div id='princess'></div>");
+}
+function Cake(){
+ this.html = $("<div id='cake'></div>");
+}
