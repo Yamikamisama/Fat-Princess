@@ -14,8 +14,7 @@ function Princess(arena) {
   this.initDisplay();
 }
 
-function Cake(arena, x, y) {
-  this.$arena = arena;
+function Cake(x, y) {
   this.height = 34;
   this.width = 34;
   this.x = x+this.width/2;
@@ -23,8 +22,7 @@ function Cake(arena, x, y) {
   this.cakeDisplay();
 }
 
-function Carrot(arena, x, y) {
-  this.$arena = arena;
+function Carrot(x, y) {
   this.height = 34;
   this.width = 34;
   this.x = x+this.width/2;

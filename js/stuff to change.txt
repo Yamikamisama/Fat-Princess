@@ -1,0 +1,22 @@
+Get rid of DS_Store
+
+View.js:
+Line 42 : skinnyBooty => princessShrink
+
+
+Refactor:
+Get rid of the arena in the objects except game
+
+Make a view object that handles views:
+
+All the initial displays except score board can be one function (lines 5-23)
+
+refactor into one function (Lines 35 - 47)
+
+refactor lines 53-66 Can all be one function
+
+refactor Actions for Objects into one function(Stretch)
+
+Check out lines 136 and 139
+  - Same function being called twice / unnecessarily
+  - change to switch statement not if statement

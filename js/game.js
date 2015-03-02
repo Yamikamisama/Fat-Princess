@@ -26,8 +26,8 @@ function Game() {
   this.$arena = $('#arena');
   this.$scorebar = $('#scorebar');
   this.princess = new Princess(this.$arena);
-  this.cake = [new Cake(this.$arena, 600, 600)];
-  this.carrot = [new Carrot(this.$arena, 200, 200)];
+  this.cake = [new Cake(600, 600)];
+  this.carrot = [new Carrot(200, 200)];
   this.score = new Score(this.$scorebar);
 }
 
