@@ -1,9 +1,3 @@
-Get rid of DS_Store
-
-View.js:
-Line 42 : skinnyBooty => princessShrink
-
-
 Refactor:
 Get rid of the arena in the objects except game
 

@@ -39,7 +39,7 @@ Princess.prototype.princessGrow = function () {
   this.updateDisplay();
 }
 
-Princess.prototype.skinnyBooty = function () {
+Princess.prototype.princessShrink = function () {
   this.height -= 20;
   this.width -= 20;
   $('#princess').css({height: this.height, width: this.width});
@@ -76,7 +76,7 @@ Score.prototype.updateScore = function(){
 Princess.prototype.eatCake = function (cake,score) {
   if (Math.sqrt(Math.pow((this.x-cake.x),2)+Math.pow(this.y-cake.y,2)) < (cake.width+this.width)/2)
     {
-    nomCake.play();
+    eatCakeSound.play();
     cake.x = Math.floor(Math.random() * 600) + 100//Math.random()*600;
     cake.y = Math.floor(Math.random() * 600) + 100//Math.random()*600;
     this.princessGrow();
@@ -89,10 +89,10 @@ Princess.prototype.eatCake = function (cake,score) {
 Princess.prototype.eatCarrot = function (carrot,score) {
   if (Math.sqrt(Math.pow((this.x-carrot.x),2)+Math.pow(this.y-carrot.y,2)) < (carrot.width+this.width)/2)
     {
-    nomCarrot.play();
+    eatCarrotSound.play();
     carrot.x = Math.floor(Math.random() * 600) + 100
     carrot.y = Math.floor(Math.random() * 600) + 100
-    this.skinnyBooty();
+    this.princessShrink();
     score.pounds-=100;
     score.lives-=1;
     if (score.lives==0) {
